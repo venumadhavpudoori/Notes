@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, updateTodo } from '../redux/actions';
 
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 function TodoItem({todo}) {
     const [editable, setEditable] = useState(false);
@@ -10,7 +11,8 @@ function TodoItem({todo}) {
     return (
         <div>   
             <div className="row mx-2 align-items-center">
-                <div>#{todo.id.length > 1 ? todo.id[2] : todo.id}</div>
+            <Fragment>
+                <div>{<ArrowRightIcon />}</div>
                 <div className="col">
                 { editable ? 
                 <input 
@@ -40,6 +42,7 @@ function TodoItem({todo}) {
                 <button
                 onClick={() => dispatch(deleteTodo(todo.id))}
                 className="btn btn-danger m-2">Delete</button>
+                </Fragment>
             </div>
         </div>     
     
